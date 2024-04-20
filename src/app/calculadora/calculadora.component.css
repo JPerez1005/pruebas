@@ -1,0 +1,12 @@
+h1{
+    color: cadetblue;
+}
+
+.caja{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-left: 20%;
+    padding-right: 20%;
+    gap: 5%;
+}

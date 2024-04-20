@@ -1,0 +1,26 @@
+    
+<marquee behavior="" direction="">
+    <h1>Calculadora</h1>
+</marquee>
+
+<div class="caja">
+    <input type="number" class="form-control"
+    [(ngModel)]="a">
+    
+    <input type="number" class="form-control"
+    [(ngModel)]="b">
+</div>
+<br><br><br><br>
+<!-- <marquee behavior="" direction="" 
+scrollamount="30"> -->
+    <button type="button" class="btn btn-outline-success"
+    style="margin-left: 47%;"
+    (click)="suma()">
+        sumar
+    </button>
+<!-- </marquee> -->
+
+<br><br><br><br>
+<h1 style="text-align: center;">
+    Resultado:{{resultado}}
+</h1>

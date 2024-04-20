@@ -1,0 +1,36 @@
+<br>
+<h1>persona works!</h1>
+<p>Nombre: {{nombre}}</p>
+<p>Apellido: {{apellido}}</p>
+<p>Edad: {{getEdad()}}</p>
+
+<!-- <div (keyup)="0">
+    <label>Repetidor:</label>
+    <input #entrada/>
+    {{entrada.value}}
+</div> -->
+<br>
+<button type="button" class="btn btn-outline-success"
+[disabled]="deshabilitar"
+(click)="agregarPersona()">
+    Agregar
+</button>
+
+<br>
+<p
+*ngIf="mostrar; else sinPersona" 
+>{{mensaje}} con el titulo de {{titulo}}</p>
+
+<ng-template #sinPersona>
+    <p [hidden]="oculto">No se Agregó ninguna persona</p>
+</ng-template>
+
+<br>
+<label for="">Titulo de Persona</label>
+<!-- <input type="text" class="form-control"
+(input)="modificarTitulo($event)"> -->
+
+<input type="text" class="form-control"
+[(ngModel)]="titulo">
+<h1>{{titulo}}</h1>
+<br>
