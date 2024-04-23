@@ -2,7 +2,19 @@
 <!-- <span>hola {{titulo}}</span> -->
 <!-- <app-calculadora></app-calculadora> -->
 
-<h1>{{titulo}}</h1>
+<div class="container">
+    <!-- Fila para el título -->
+    <div class="row text-center">
+        <h1>{{titulo}}</h1>
+    </div>
+    <!-- Fila para los botones -->
+    <div class="row justify-content-end">
+        <div class="col-3 d-flex justify-content-evenly">
+            <button *ngIf="isNotAutenticado()" class="btn btn-outline-primary" routerLink="/login">Login</button>
+            <button *ngIf="isAutenticado()" class="btn btn-outline-danger" (click)="salir()">Salir</button>
+        </div>
+    </div>
+</div>
 <hr>
 
 <router-outlet></router-outlet>

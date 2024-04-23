@@ -4,7 +4,7 @@ import { getAuth, signInWithEmailAndPassword, UserCredential } from 'firebase/au
 
 @Injectable()
 export class LogginService {
-    token: string | undefined;
+    token: string | null | undefined;
 
     constructor(private router: Router) {}
 
@@ -29,7 +29,26 @@ export class LogginService {
             });
     }
 
-    getIdToken(): string | undefined {
+    getIdToken(): string | null | undefined {
         return this.token;
+    }
+
+    isAutenticado(){
+        return this.token!=null;
+    }
+
+    isNotAutenticado(){
+        return this.token==null;
+    }
+
+    logout(){
+        const auth = getAuth();
+
+        auth.signOut().then(
+            ()=>{
+                this.token=null;
+                this.router.navigate(['login']);
+            }
+        );
     }
 }

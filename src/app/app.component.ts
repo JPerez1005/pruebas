@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { LogginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
     // Añade otras configuraciones de Firebase si las tienes
   };
 
-  constructor() {}
+  constructor(private logginService:LogginService) {}
 
   ngOnInit(): void {
     // Inicializa Firebase usando initializeApp
@@ -27,5 +28,17 @@ export class AppComponent implements OnInit {
     const auth = getAuth(app);
     const firestore = getFirestore(app);
     initializeApp(this.firebaseConfig);
+  }
+
+  isAutenticado(){
+    return this.logginService.isAutenticado();
+  }
+
+  isNotAutenticado(){
+    return this.logginService.isNotAutenticado();
+  }
+
+  salir(){
+    this.logginService.logout();
   }
 }
