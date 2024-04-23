@@ -17,8 +17,9 @@ export class DataServices{
 
     //Guardar Personas
     guardarPersonas(personas: Persona[]){
+        const token=this.loginService.getIdToken();
         this.httpClient.put
-        ('https://listado-personas-e6e6d-default-rtdb.firebaseio.com/datos.json',personas)
+        ('https://listado-personas-e6e6d-default-rtdb.firebaseio.com/datos.json?auth='+token,personas)
         .subscribe(
             response=>console.log("resultado de guardar personas" + response),
             error=>console.log("Eror al mandar respuesta"+error)

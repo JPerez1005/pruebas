@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Persona } from '../../persona/persona.model';
 import { PersonasService } from '../../PersonasService.service';
+import { LogginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-personas',
@@ -13,7 +14,8 @@ export class PersonasComponent implements OnInit {
   @Input() i:number;
 
   constructor(
-    private personasService:PersonasService
+    private personasService:PersonasService,
+    private logginService:LogginService
   ) 
   { }
 
@@ -22,6 +24,10 @@ export class PersonasComponent implements OnInit {
 
   emitirSaludo(){
     this.personasService.saludar.emit(this.i);
+  }
+
+  isAutenticado(){
+    return this.logginService.isAutenticado();
   }
 
 }

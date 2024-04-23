@@ -1,10 +1,11 @@
 <div>
     <ul>
         <li>
-            <a [routerLink]="['/personas',i]">
+            <p >
                 <!-- {{i+1}}: -->
-                {{persona.nombre}} {{persona.apellido}}
-            </a>
+                {{persona.nombre}} {{persona.apellido}} 
+            </p>
+            <button [routerLink]="['/personas',i]" class="btn btn-dark">editar</button>
         </li>
     </ul>
     <!-- <button type="submit"

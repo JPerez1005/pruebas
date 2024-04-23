@@ -1,33 +1,35 @@
-<form class="form-col" #f="ngForm" (ngSubmit)="f.form.valid && onGuardarPersona()">
-    <div class="form-group col-md-2">
-        <label for="nombre" hidden>Nombre</label>
-        <input type="text" name="nombre" id="nombre"
-        placeholder="Nombre" class="form-control"
-        [(ngModel)]="nombreInput">
-        <input type="text" name="apellido" id="apellido"
-        placeholder="Apellido" class="form-control"
-        [(ngModel)]="apellidoInput">
-    </div>
-    <div class="form-group col-md-1" style="display: flex; gap: 20px; margin-top: 20px;">
-        <button
-        *ngIf="index==null"
-        type="submit"
-        class="btn btn-outline-success">
-            Agregar
-        </button>
-        <button
-        *ngIf="index!=null"
-        type="submit"
-        class="btn btn-outline-primary">
-            Modificar
-        </button>
-        <button
-        *ngIf="index!=null"
-        type="submit"
-        class="btn btn-outline-danger"
-        (click)="onEliminarPersona()">
-            Eliminar
-        </button>
-    </div>
-    <!-- (click)="agregarPersona()" -->
-</form>
+<div class="container">
+    <form *ngIf="isAutenticado()" class="form-col" #f="ngForm" (ngSubmit)="f.form.valid && onGuardarPersona()">
+        <div class="form-group col-md-12">
+            <label for="nombre" hidden>Nombre</label>
+            <input type="text" name="nombre" id="nombre"
+            placeholder="Nombre" class="form-control"
+            [(ngModel)]="nombreInput">
+            <input type="text" name="apellido" id="apellido"
+            placeholder="Apellido" class="form-control"
+            [(ngModel)]="apellidoInput">
+        </div>
+        <div class="form-group col-md-1" style="display: flex; gap: 20px; margin-top: 20px;">
+            <button
+            *ngIf="index==null"
+            type="submit"
+            class="btn btn-dark">
+                Agregar
+            </button>
+            <button
+            *ngIf="index!=null"
+            type="submit"
+            class="btn btn-dark">
+                Modificar
+            </button>
+            <button
+            *ngIf="index!=null"
+            type="submit"
+            class="btn btn-danger"
+            (click)="onEliminarPersona()">
+                Eliminar
+            </button>
+        </div>
+        <!-- (click)="agregarPersona()" -->
+    </form>
+</div>

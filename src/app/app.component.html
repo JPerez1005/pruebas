@@ -10,8 +10,8 @@
     <!-- Fila para los botones -->
     <div class="row justify-content-end">
         <div class="col-3 d-flex justify-content-evenly">
-            <button *ngIf="isNotAutenticado()" class="btn btn-outline-primary" routerLink="/login">Login</button>
-            <button *ngIf="isAutenticado()" class="btn btn-outline-danger" (click)="salir()">Salir</button>
+            <button *ngIf="isNotAutenticado()" class="btn btn-dark" routerLink="/login">Login</button>
+            <button *ngIf="isAutenticado()" class="btn btn-danger" (click)="salir()">Salir</button>
         </div>
     </div>
 </div>

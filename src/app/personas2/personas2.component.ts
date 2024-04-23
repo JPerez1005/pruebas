@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from '../persona/persona.model';
 import { PersonasService } from '../PersonasService.service';
 import { Router } from '@angular/router';
+import { LogginService } from '../login/login.service';
 
 @Component({
   selector: 'app-personas2',
@@ -14,7 +15,8 @@ export class Personas2Component implements OnInit {
 
   constructor(
     private personasService: PersonasService,
-    private router: Router
+    private router: Router,
+    private logginService:LogginService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,10 @@ export class Personas2Component implements OnInit {
 
   agregar() {
     this.router.navigate(['personas/agregar']);
+  }
+
+  isAutenticado(){
+    return this.logginService.isAutenticado();
   }
 
 }

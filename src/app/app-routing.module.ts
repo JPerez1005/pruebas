@@ -7,10 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuardian } from './login/login-guardian.service';
 
 const routes: Routes=[
-  { path: '', component:Personas2Component, canActivate:[LoginGuardian] },
-  { path: 'personas', component:Personas2Component, canActivate:[LoginGuardian] },
-  { path: 'personas/agregar', component:FormularioComponent, canActivate:[LoginGuardian] },
-  { path: 'personas/:id', component: FormularioComponent, canActivate:[LoginGuardian] },
+  { path: '', component:Personas2Component},
+  { path: 'personas', component:Personas2Component},
+  { path: 'personas/agregar', component:FormularioComponent},
+  { path: 'personas/:id', component: FormularioComponent},
   { path: 'login', component: LoginComponent },
   { path: '**', component: ErrorComponent }
 ]

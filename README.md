@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Results
+![Presentación](image.png)
+
+This is a web page that requests a person to enter, this page registers people, you can modify them, and you can even delete people who have already registered.
+
+![alt text](image-1.png)
+In order to access the data it is necessary to log in, the entry data is as follows:
+anonimo@gmail.com
+anonimo123
+
+![alt text](image-2.png)
+As you can see, the data can now be displayed, this is thanks to firebase and angular.
+
+# Thanks for your visit

@@ -1,0 +1,46 @@
+/*================== SCROLL ==================*/
+
+::-webkit-scrollbar{
+    width: 5px;
+    height: 1px;
+}
+
+::-webkit-scrollbar-track{
+    border: 7px solid white;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,.5) inset;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 3px;
+    background: linear-gradient(
+        45deg,
+        #FFF5E1,
+        rgb(50, 80, 81)
+    );
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p{
+    width: 50%;
+    text-align: center;
+    font-weight: 500;
+
+}
+
+.listado{
+    backdrop-filter: blur(20px);
+    padding: 5%;
+    border: 2px solid #000;
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-radius: 10px;
+    max-height: 50vh;
+    overflow: auto;
+}

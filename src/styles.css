@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+body {
     background-color: honeydew !important;
+    background-image: url("https://images.pexels.com/photos/20408466/pexels-photo-20408466/free-photo-of-paisaje-montanas-persona-campo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-size: cover;
+    object-fit: cover;
+    background-position: 0px 10%;
 }

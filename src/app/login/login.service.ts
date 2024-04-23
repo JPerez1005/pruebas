@@ -4,9 +4,13 @@ import { getAuth, signInWithEmailAndPassword, UserCredential } from 'firebase/au
 
 @Injectable()
 export class LogginService {
-    token: string | null | undefined;
+    // Declarar el tipo de `token` como `string | null` para que pueda ser `null`.
+    token: string | null;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router) {
+        // Recupera el token de `localStorage` cuando se instancia la clase
+        this.token = localStorage.getItem('authToken');
+    }
 
     login(email: string, password: string): void {
         const auth = getAuth(); // Obtiene la instancia de autenticación
@@ -19,6 +23,8 @@ export class LogginService {
                 // Almacenar el token del usuario si es necesario
                 user?.getIdToken().then((token: string) => {
                     this.token = token;
+                    // Guarda el token en `localStorage`
+                    localStorage.setItem('authToken', token);
                 });
                 // Redirigir al usuario después de un inicio de sesión exitoso
                 this.router.navigate(['/']);
@@ -29,26 +35,27 @@ export class LogginService {
             });
     }
 
-    getIdToken(): string | null | undefined {
+    getIdToken(): string | null {
         return this.token;
     }
 
-    isAutenticado(){
-        return this.token!=null;
+    isAutenticado(): boolean {
+        return this.token !== null;
     }
 
-    isNotAutenticado(){
-        return this.token==null;
+    isNotAutenticado(): boolean {
+        return this.token === null;
     }
 
-    logout(){
+    logout(): void {
         const auth = getAuth();
-
-        auth.signOut().then(
-            ()=>{
-                this.token=null;
-                this.router.navigate(['login']);
-            }
-        );
+        auth.signOut().then(() => {
+            // Al cerrar sesión, limpiar el token
+            this.token = null;
+            // Elimina el token de `localStorage`
+            localStorage.removeItem('authToken');
+            // Redirigir al usuario a la página de inicio de sesión
+            this.router.navigate(['login']);
+        });
     }
 }

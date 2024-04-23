@@ -1,12 +1,26 @@
-<div style="text-align: center;">
-    <button class="btn btn-outline-success" (click)="agregar()">
+<div *ngIf="isAutenticado()" style="text-align: center;">
+    <button class="btn btn-dark" (click)="agregar()">
         Agregar Persona
     </button>
 </div>
 
+<div *ngIf="!isAutenticado()" style="text-align: center;" class="container">
+    <h1>Hola Bienvenido</h1>
+    <br><br><br><br>
+    <p>
+        Esta es una pagina web que solicita un ingreso de persona,
+        esta pagina hace un registro de personas, las puede modificar,
+        e incluso tambien puede eliminar las personas que ya se hayan registrado.
+    </p>
+    <br><br><br>
+    <h2>Gracias por su visita!</h2>
+</div>
+
 <!-- <app-formulario></app-formulario> -->
 
-<app-personas *ngFor="let persona of personas; let i = index"
-[persona]="persona"
-[i]="i">
-</app-personas>
+<div class="listado" *ngIf="isAutenticado()">
+    <app-personas *ngFor="let persona of personas; let i = index"
+    [persona]="persona"
+    [i]="i">
+    </app-personas>
+</div>

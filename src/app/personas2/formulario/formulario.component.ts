@@ -3,12 +3,13 @@ import { Persona } from '../../persona/persona.model';
 import { LoggingService } from '../../LoggingService.service';
 import { PersonasService } from '../../PersonasService.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LogginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css'],
-  providers: [LoggingService]//agregacion de un nuevo provedor creado
+  providers: [LoggingService]
 })
 export class FormularioComponent implements OnInit {
 
@@ -21,7 +22,8 @@ export class FormularioComponent implements OnInit {
   constructor(
     private personaService:PersonasService,
     private router:Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private logginService:LogginService
   ){
     this.personaService.saludar.subscribe(
       (i:number) =>alert("El indice es: "+i)
@@ -44,12 +46,15 @@ export class FormularioComponent implements OnInit {
     this.router.navigate(['personas']);
     setTimeout(() => {
       window.location.reload();
-    }, 1500);
+    }, 200);
   }
 
   onEliminarPersona(){
     this.personaService.eliminarPersona(this.index);
     this.router.navigate(['personas']);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   ngOnInit(): void {
@@ -59,6 +64,10 @@ export class FormularioComponent implements OnInit {
       this.nombreInput=persona.nombre;
       this.apellidoInput=persona.apellido;
     }
+  }
+
+  isAutenticado(){
+    return this.logginService.isAutenticado();
   }
 
 }
