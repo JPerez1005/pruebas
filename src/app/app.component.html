@@ -4,10 +4,5 @@
 
 <h1>{{titulo}}</h1>
 <hr>
-<app-formulario></app-formulario>
 
-<app-personas *ngFor="let persona of personas; let i = index"
-[persona]="persona"
-[i]="i">
-
-</app-personas>
+<router-outlet></router-outlet>

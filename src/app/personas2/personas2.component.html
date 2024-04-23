@@ -1,0 +1,12 @@
+<div style="text-align: center;">
+    <button class="btn btn-outline-success" (click)="agregar()">
+        Agregar Persona
+    </button>
+</div>
+
+<!-- <app-formulario></app-formulario> -->
+
+<app-personas *ngFor="let persona of personas; let i = index"
+[persona]="persona"
+[i]="i">
+</app-personas>
