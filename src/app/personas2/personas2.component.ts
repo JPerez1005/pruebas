@@ -10,18 +10,34 @@ import { Router } from '@angular/router';
 })
 export class Personas2Component implements OnInit {
 
-  personas: Persona[]=[];
+  personas: Persona[] = [];
 
   constructor(
-    private personasService:PersonasService,
-    private router:Router
-  ) {}
+    private personasService: PersonasService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.personas=this.personasService.personas;
+    this.personasService.obtenerPersonas().subscribe({
+      next: (value: any) => {
+        // Supón que el valor es de tipo Persona[]
+        const personas: Persona[] = value;
+        this.personas = personas;
+        this.personasService.setPersonas(personas);
+      },
+      error: (err) => {
+        // Maneja el error
+        console.error('Error al obtener las personas:', err);
+      },
+      complete: () => {
+        // Maneja la finalización
+        console.log('Se completó la obtención de personas.');
+      }
+    });
   }
 
-  agregar(){
+
+  agregar() {
     this.router.navigate(['personas/agregar']);
   }
 

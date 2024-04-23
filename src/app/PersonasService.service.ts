@@ -5,10 +5,7 @@ import { DataServices } from "./data.services";
 
 @Injectable()
 export class PersonasService{
-    personas: Persona[]=[
-        new Persona("Julián","Pérez"),
-        new Persona("Laura","Perez")
-    ];
+    personas: Persona[]=[];
 
     saludar=new EventEmitter<number>();
 
@@ -17,9 +14,27 @@ export class PersonasService{
         private dataServices:DataServices    
     ){ }
 
+    setPersonas(personas:Persona[]){
+        this.personas=personas;
+    }
+
+    obtenerPersonas(){
+        return this.dataServices.cargarPersonas();
+    }
+
     agregarPersona(persona: Persona){
+        if (this.personas==null) {
+            this.personas=[];
+        }
         this.personas.push(persona);
         this.loggingService.enviaMensajeAConsola("Persona agregada en el arreglo: "+persona.nombre);
+        this.dataServices.guardarPersonas(this.personas);
+    }
+
+    modificarPersona(index:number,persona: Persona){
+        let p=this.personas[index];
+        p.nombre=persona.nombre;
+        p.apellido=persona.apellido;
         this.dataServices.guardarPersonas(this.personas);
     }
 
@@ -28,13 +43,10 @@ export class PersonasService{
         return persona;
     }
 
-    modificarPersona(index:number,persona: Persona){
-        let p=this.personas[index];
-        p.nombre=persona.nombre;
-        p.apellido=persona.apellido;
-    }
-
     eliminarPersona(index:number){
         this.personas.splice(index,1);
+        this.dataServices.guardarPersonas(this.personas);
     }
+
+
 }

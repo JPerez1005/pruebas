@@ -42,6 +42,9 @@ export class FormularioComponent implements OnInit {
       this.personaService.agregarPersona(p);
     }
     this.router.navigate(['personas']);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
   }
 
   onEliminarPersona(){
